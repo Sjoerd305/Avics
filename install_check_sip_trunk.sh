@@ -4,7 +4,7 @@
 
 # Set variables
 SIP_TRUNK_IP="145.131.159.203"
-INSTALL_DIR="/opt/check_sip_trunk"
+INSTALL_DIR="/opt/sip_trunk_monitor"
 LOG_FILE="/var/log/check_sip_trunk.log"
 CRON_JOB="*/5 * * * * $INSTALL_DIR/check_sip_trunk.sh"
 
