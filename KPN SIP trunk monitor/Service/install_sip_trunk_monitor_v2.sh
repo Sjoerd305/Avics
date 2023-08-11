@@ -1,18 +1,16 @@
 #!/bin/bash
-#Sjoerd van Dijk 11-08-2023
-#Install SIP Trunk Monitor as a Service
 
 # Set variables
 INSTALL_DIR="/opt/sip_trunk_monitor"
 SCRIPT_NAME="sip_trunk_monitor.sh"
 SERVICE_NAME="sip_trunk_monitor.service"
-SCRIPT_SOURCE="sip_trunk_monitor.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/Sjoerd305/Avics/main/KPN%20SIP%20trunk%20monitor/Service/sip_trunk_monitor.sh"  # Replace with the actual HTTPS URL of your script
 
 # Create the installation directory
 sudo mkdir -p $INSTALL_DIR
 
-# Copy the script file
-sudo cp $SCRIPT_SOURCE $INSTALL_DIR/$SCRIPT_NAME
+# Download the script file
+sudo curl -o $INSTALL_DIR/$SCRIPT_NAME $SCRIPT_URL
 
 # Create the service unit file
 cat <<EOT > /etc/systemd/system/$SERVICE_NAME
