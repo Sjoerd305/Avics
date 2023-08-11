@@ -1,4 +1,7 @@
 #!/bin/bash
+#Sjoerd van Dijk 11-08-2023
+#Installs a SIP trunk monitor 
+#Uses cron to run the script every 5 minutes
 
 # Script to install SIP trunk monitoring and log rotation
 

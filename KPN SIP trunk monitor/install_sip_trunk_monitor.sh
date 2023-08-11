@@ -7,7 +7,6 @@
 INSTALL_DIR="/opt/sip_trunk_monitor"
 SCRIPT_NAME="sip_trunk_monitor.sh"
 SERVICE_NAME="sip_trunk_monitor.service"
-LOG_FILE="/var/log/sip_trunk_monitor.log"
 
 # Create the installation directory
 sudo mkdir -p $INSTALL_DIR
@@ -20,10 +19,11 @@ cat <<EOT > $INSTALL_DIR/$SCRIPT_NAME
 SIP_TRUNK_IP="145.131.159.203"
 MAX_RETRIES=5  # Maximum number of restart retries
 RETRY_DELAY=15  # Initial retry delay in seconds
+LOG_FILE="/var/log/sip_trunk_monitor.log"
 
 # Function to log messages with timestamp
 log_message() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] \$1" >> "$LOG_FILE"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOG_FILE"
 }
 
 # Function to restart Asterisk
