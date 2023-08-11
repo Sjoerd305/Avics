@@ -1,4 +1,6 @@
 #!/bin/bash
+#Sjoerd van Dijk 11-08-2023
+#SIP Trunk Monitor Service
 
 # Set variables
 SIP_TRUNK_IP="145.131.159.203"

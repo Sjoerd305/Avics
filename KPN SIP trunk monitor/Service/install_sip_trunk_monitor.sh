@@ -1,4 +1,7 @@
 #!/bin/bash
+#Sjoerd van Dijk 11-08-2023
+#SIP Trunk Monitor Service monitoring IP 145.131.159.203
+#IP can be changed in sip_trunk_monitor.sh
 
 # Set variables
 INSTALL_DIR="/opt/sip_trunk_monitor"
