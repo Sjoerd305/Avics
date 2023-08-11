@@ -17,25 +17,25 @@ restart_asterisk() {
 }
 
 while true; do
-    sip_registration_status=\$(sudo asterisk -rx "sip show registry" | grep "\$SIP_TRUNK_IP")
+    sip_registration_status=$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP")
 
-    if [[ -z "\$sip_registration_status" ]]; then
+    if [[ -z "$sip_registration_status" ]]; then
         log_message "SIP trunk is not registered. Restarting Asterisk..."
         restart_asterisk
         log_message "Asterisk restarted."
         retry_count=0
-        while [[ \$retry_count -lt \$MAX_RETRIES ]]; do
-            sleep \$RETRY_DELAY
-            sip_registration_status=\$(sudo asterisk -rx "sip show registry" | grep "\$SIP_TRUNK_IP")
-            if [[ -n "\$sip_registration_status" ]]; then
+        while [[ $retry_count -lt $MAX_RETRIES ]]; do
+            sleep $RETRY_DELAY
+            sip_registration_status=$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP")
+            if [[ -n "$sip_registration_status" ]]; then
                 log_message "SIP trunk is registered after retry."
                 break
             fi
             ((retry_count++))
         done
 
-        if [[ \$retry_count -eq \$MAX_RETRIES ]]; then
-            log_message "SIP trunk could not be registered after \$MAX_RETRIES retries. Manual intervention may be required."
+        if [[ $retry_count -eq $MAX_RETRIES ]]; then
+            log_message "SIP trunk could not be registered after $MAX_RETRIES retries. Manual intervention may be required."
         fi
     else
         log_message "SIP trunk is registered."
