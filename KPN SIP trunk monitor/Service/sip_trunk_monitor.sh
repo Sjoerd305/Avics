@@ -33,6 +33,8 @@ while true; do
                 log_message "SIP trunk is registered after retry."
                 break
             fi
+            restart_asterisk
+            log_message "Asterisk restarted during retry."
             ((retry_count++))
         done
 
