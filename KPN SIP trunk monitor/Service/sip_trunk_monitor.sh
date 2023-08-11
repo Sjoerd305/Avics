@@ -5,7 +5,7 @@
 # Set variables
 SIP_TRUNK_IP="145.131.159.203"
 MAX_RETRIES=5  # Maximum number of restart retries
-RETRY_DELAY=15  # Initial retry delay in seconds
+RETRY_DELAY=60  # Initial retry delay in seconds
 LOG_FILE="/var/log/sip_trunk_monitor.log"
 
 # Function to log messages with timestamp
