@@ -8,6 +8,7 @@ INSTALL_DIR="/opt/sip_trunk_monitor"
 SCRIPT_NAME="sip_trunk_monitor.sh"
 SERVICE_NAME="sip_trunk_monitor.service"
 SCRIPT_URL="https://raw.githubusercontent.com/Sjoerd305/Avics/main/KPN%20SIP%20trunk%20monitor/Service/sip_trunk_monitor.sh"
+LOGROTATE_CONFIG="/etc/logrotate.d/sip_trunk_monitor"
 
 # Create the installation directory
 sudo mkdir -p $INSTALL_DIR
@@ -33,6 +34,22 @@ EOT
 # Add execution permissions to the script
 sudo chmod +x $INSTALL_DIR/$SCRIPT_NAME
 
+# Create logrotate configuration
+sudo bash -c "cat << EOT > $LOGROTATE_CONFIG
+$INSTALL_DIR/sip_trunk_monitor.log {
+    rotate 7
+    daily
+    missingok
+    notifempty
+    compress
+    delaycompress
+    create 644 root root
+}
+EOT"
+
+# Reload logrotate configuration
+sudo logrotate -f $LOGROTATE_CONFIG
+
 # Reload systemd manager configuration
 sudo systemctl daemon-reload
 
@@ -42,3 +59,4 @@ sudo systemctl enable $SERVICE_NAME
 
 echo "Installation completed successfully!"
 echo "The sip_trunk_monitor service has started"
+echo "Log rotation has been set up"
