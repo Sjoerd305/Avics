@@ -5,13 +5,12 @@
 # Set up variables
 INSTALL_DIR="/opt/sip_trunk_monitor"
 LOG_DIR="/var/log"
-URL=""
 
 # Create the installation directory
 sudo mkdir -p "$INSTALL_DIR"
 
 # Download the main script using wget
-sudo wget -O "$INSTALL_DIR/sip_trunk_monitor.sh" "URL_TO_RAW_SCRIPT_FILE"
+sudo wget -O "$INSTALL_DIR/sip_trunk_monitor.sh" "https://raw.githubusercontent.com/Sjoerd305/Avics/main/KPN%20SIP%20trunk%20monitor/Crontab/sip_trunk_monitor.sh"
 
 # Make the script executable
 sudo chmod +x "$INSTALL_DIR/sip_trunk_monitor.sh"
