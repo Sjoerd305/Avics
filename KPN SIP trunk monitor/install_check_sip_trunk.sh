@@ -19,7 +19,7 @@ cat <<EOT > $INSTALL_DIR/check_sip_trunk.sh
 #!/bin/bash
 
 # Check SIP registration status
-sip_registration_status=\$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP")
+sip_registration_status=\$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP" | grep Registered)
 
 if [[ -z "\$sip_registration_status" ]]; then
     log_message="[\$(date '+%Y-%m-%d %H:%M:%S')] SIP trunk is not registered. Restarting Asterisk..."
