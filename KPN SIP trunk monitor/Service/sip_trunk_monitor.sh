@@ -1,5 +1,5 @@
 #!/bin/bash
-#Sjoerd van Dijk 11-08-2023
+#Sjoerd van Dijk 15-08-2023
 #SIP Trunk Monitor Service
 
 # Set variables
@@ -19,7 +19,7 @@ restart_asterisk() {
 }
 
 while true; do
-    sip_registration_status=$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP")
+    sip_registration_status=$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP" | grep Registered)
 
     if [[ -z "$sip_registration_status" ]]; then
         log_message "SIP trunk is not registered. Restarting Asterisk..."
@@ -28,7 +28,7 @@ while true; do
         retry_count=0
         while [[ $retry_count -lt $MAX_RETRIES ]]; do
             sleep $RETRY_DELAY
-            sip_registration_status=$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP")
+            sip_registration_status=$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP" | grep Registered)
             if [[ -n "$sip_registration_status" ]]; then
                 log_message "SIP trunk is registered after retry."
                 break
