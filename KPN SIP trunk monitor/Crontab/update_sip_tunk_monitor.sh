@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 #Sjoerd van Dijk 08-11-2023
 #Update SIP trunk monitor
 
