@@ -41,4 +41,5 @@ if [[ -z "$sip_registration_status" ]]; then
         log_message "SIP trunk could not be registered after $MAX_RETRIES retries. Manual intervention may be required."
     fi
 else
+        :
 fi
