@@ -10,7 +10,7 @@ LOG_DIR="/var/log"
 sudo mkdir -p "$INSTALL_DIR"
 
 # Download the main script using wget
-sudo wget -O "$INSTALL_DIR/sip_trunk_monitor.sh" "https://raw.githubusercontent.com/Sjoerd305/Avics/main/KPN%20SIP%20trunk%20monitor/Crontab/sip_trunk_monitor.sh"
+sudo wget -O "$INSTALL_DIR/sip_trunk_monitor.sh" "https://raw.githubusercontent.com/Sjoerd305/Avics/main/Asterisk%20SIP%20trunk%20monitor/Crontab/sip_trunk_monitor.sh"
 
 # Make the script executable
 sudo chmod +x "$INSTALL_DIR/sip_trunk_monitor.sh"

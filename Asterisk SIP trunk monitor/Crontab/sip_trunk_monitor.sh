@@ -3,7 +3,7 @@
 #SIP Trunk Monitor using Crontab
 
 # Set variables
-SIP_TRUNK_IP="145.131.159.203"
+SIP_TRUNK_IP="145.131.159.203" #Change this IP address to the desired SIP trunk IP
 MAX_RETRIES=5  # Maximum number of restart retries
 RETRY_DELAY=60  # Initial retry delay in seconds
 LOG_FILE="/var/log/sip_trunk_monitor.log"
@@ -41,5 +41,5 @@ if [[ -z "$sip_registration_status" ]]; then
         log_message "SIP trunk could not be registered after $MAX_RETRIES retries. Manual intervention may be required."
     fi
 else
-        :
+        : #Do nothing if SIP trunk is registered
 fi
