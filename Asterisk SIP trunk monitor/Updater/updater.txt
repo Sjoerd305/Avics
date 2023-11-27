@@ -1,3 +1,0 @@
-sudo wget -O "/opt/sip_trunk_monitor/sip_trunk_monitor.sh" "https://raw.githubusercontent.com/Sjoerd305/Avics/main/KPN%20SIP%20trunk%20monitor/Crontab/sip_trunk_monitor.sh"
-cd /opt/sip_trunk_monitor
-chmod +x sip_trunk_monitor.sh
