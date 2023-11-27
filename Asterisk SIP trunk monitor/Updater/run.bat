@@ -1,0 +1,12 @@
+echo y | plink root@192.168.32.10 -pw @vics381381 -m updater.txt
+echo y | plink root@192.168.35.10 -pw @vics381381 -m updater.txt
+echo y | plink root@192.168.39.10 -pw @vics381381 -m updater.txt
+echo y | plink root@192.168.42.10 -pw @vics381381 -m updater.txt
+echo y | plink root@10.36.1.10 -pw @vics381381 -m updater.txt
+echo y | plink root@10.36.3.10 -pw @vics381381 -m updater.txt
+echo y | plink root@10.36.5.10 -pw @vics381381 -m updater.txt
+echo y | plink root@10.36.7.10 -pw @vics381381 -m updater.txt
+echo y | plink root@10.36.9.10 -pw @vics381381 -m updater.txt
+echo y | plink root@10.36.11.10 -pw @vics381381 -m updater.txt
+echo y | plink root@172.31.31.10 -pw @vics381381 -m updater.txt
+echo y | plink root@172.31.34.10 -pw @vics381381 -m updater.txt
