@@ -1,0 +1,1 @@
+Download snapshot from SOS device, crontab can be used to run the script at a certain time. 
