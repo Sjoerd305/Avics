@@ -30,7 +30,6 @@ ip_addresses=(
     "172.16.2.120"
     "172.16.2.221"
     "172.16.2.116"
-    # Add more IP addresses as needed
 )
 
 username="account"
