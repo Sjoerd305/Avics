@@ -1,4 +1,7 @@
 #!/bin/bash
+# Sjoerd van Dijk 
+# Avics B.V.
+# 16-01-2024
 
 # File containing the list of IP addresses, one per line
 IP_FILE="iplist.txt"
