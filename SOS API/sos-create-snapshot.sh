@@ -10,6 +10,15 @@ username="account"
 password="password"
 snapshot_endpoint="/take-snapshot/"
 
+# Check if the file exists
+if [ ! -f "$ip_addresses" ]; then
+    echo "Error: IP addresses file ($ip_addresses) not found."
+    exit 1
+fi
+
+# Read IP addresses from the file into an array
+mapfile -t ip_addresses < "$ip_addresses"
+
 for ip_address in "${ip_addresses[@]}"; do
     # URL for the snapshot API (HTTPS and port 4443)
     api_url="https://${ip_address}:4443${snapshot_endpoint}"
