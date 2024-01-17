@@ -5,9 +5,11 @@
 
 - Supports iplist.txt
 - Don't forget to change the credentials in the script!
+- If it doesn't create the API request you probably need to update curl. 
 
 ## SOS sip event url checker
 *Uses curl for the SOS API, outputs the sip event server url to the terminal*
 
 - Supports iplist.txt
 - Don't forget to change the credentials in the script!
+- If it doesn't create the API request you probably need to update curl. 
