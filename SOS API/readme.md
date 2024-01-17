@@ -1,7 +1,7 @@
 # SOS API scripts
 
 ## SOS snapshot downloader
-*Creates a snapshot using the SOS API via curl, downloads the snapshot to device using wget*
+*Creates a snapshot using the SOS API via curl, downloads the snapshot to device*
 
 - Supports iplist.txt
 - Don't forget to change the credentials in the script!
