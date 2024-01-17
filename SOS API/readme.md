@@ -1,7 +1,7 @@
 # SOS API scripts
 
 ## SOS snapshot downloader
-*Creates a snapshot using the SOS API via curl, downloads the snapshot to device*
+*Create a snapshot using the SOS API via curl, downloads the snapshot to device*
 
 *Note: if you run the script as root using crontab the snapshots are stored to /home/root/. When you manually run the script the snapshots are saved to the location where the script is run*
 
