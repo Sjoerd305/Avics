@@ -1,7 +1,5 @@
 #!/bin/bash
-# Sjoerd van Dijk 
-# Avics B.V.
-# 16-01-2024
+# Sjoerd van Dijk @ 2024
 
 # File containing the list of IP addresses, one per line
 IP_FILE="iplist.txt"
@@ -10,11 +8,11 @@ IP_FILE="iplist.txt"
 USERNAME="username"
 PASSWORD="password"
 
+API_REQUEST="/audio-settings/"
 # Function to perform the curl request and extract sip-event-server-url
 get_sip_event_server_url() {
     IP=$1
-    URL="https://${IP}:4443/audio-settings/"
-    #OUTPUT=$(curl --insecure -u $URL)
+    URL="https://${IP}:4443${API_REQUEST}"
     OUTPUT=$(curl --insecure -u "${USERNAME}:${PASSWORD}" "${URL}")
     # Extracting sip-event-server-url using awk
     SIP_EVENT_SERVER_URL=$(echo "$OUTPUT" | awk -F'"sip-event-server-url":' '{split($2, a, /[",]/); gsub(/^[[:space:]]+|[[:space:]]+$/, "", a[2]); print a[2]}')

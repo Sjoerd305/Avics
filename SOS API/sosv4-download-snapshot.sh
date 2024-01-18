@@ -1,13 +1,12 @@
 #!/bin/bash
-# Sjoerd van Dijk
-# Avics B.V.
-# @2024
+# Sjoerd van Dijk @ 2024
 
 # Array of IP addresses
 ip_addresses="iplist.txt"
 
 username="account"
 password="password"
+
 snapshot_endpoint="/take-snapshot/"
 
 # Check if the file exists
