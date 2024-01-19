@@ -1,5 +1,6 @@
 #!/bin/bash
 # Sjoerd van Dijk @ 2024
+# SOSv3 V4.2.x / SOSv4 4.2.x
 
 # Array of IP addresses
 ip_addresses="iplist.txt"
