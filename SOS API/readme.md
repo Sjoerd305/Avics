@@ -1,4 +1,4 @@
-# SOS API scripts
+# SOSv3/v4 scripts
 
 ## SOS snapshot downloader
 *Create a snapshot using the SOS API via curl, downloads the snapshot to device*
@@ -15,3 +15,7 @@
 - Supports iplist.txt
 - Don't forget to change the credentials in the script!
 - If it doesn't create the API request you probably need to update curl. 
+
+## SOS Helpcom to CSV
+*Useful if you want to list all the Helpcom devices to CSV*
+- Requirements: jq, sshpass
