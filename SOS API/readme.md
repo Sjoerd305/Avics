@@ -18,4 +18,6 @@
 
 ## SOS Helpcom to CSV
 *Useful if you want to list all the Helpcom devices to CSV*
+- Supports iplist.txt
+- Don't forget to change the credentials in the script!
 - Requirements: jq, sshpass
