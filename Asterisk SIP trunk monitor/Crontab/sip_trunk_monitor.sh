@@ -15,25 +15,25 @@ log_message() {
 
 # Function to restart Asterisk
 restart_asterisk() {
-    sudo asterisk -rx "core restart now"
+    asterisk -rx "core reload"
 }
 
-sip_registration_status=$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP" | grep Registered)
+sip_registration_status=$(asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP" | grep Registered)
 
 if [[ -z "$sip_registration_status" ]]; then
     log_message "SIP trunk is not registered. Restarting Asterisk..."
     restart_asterisk
-    log_message "Asterisk restarted."
+    log_message "Asterisk reloaded."
     retry_count=0
     while [[ $retry_count -lt $MAX_RETRIES ]]; do
         sleep $RETRY_DELAY
-        sip_registration_status=$(sudo asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP" | grep Registered)
+        sip_registration_status=$(asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP" | grep Registered)
         if [[ -n "$sip_registration_status" ]]; then
-            log_message "SIP trunk is registered after retry."
+            log_message "SIP trunk is registered after core reload."
             break
         fi
         restart_asterisk
-        log_message "Asterisk restarted during retry."
+        log_message "Asterisk reloaded during retry."
         ((retry_count++))
     done
 
