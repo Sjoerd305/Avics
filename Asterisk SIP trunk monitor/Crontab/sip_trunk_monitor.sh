@@ -1,5 +1,5 @@
 #!/bin/bash
-#Sjoerd van Dijk 15-08-2023
+#Sjoerd van Dijk 14-03-2024
 #SIP Trunk Monitor using Crontab
 
 # Set variables
@@ -15,14 +15,19 @@ log_message() {
 
 # Function to restart Asterisk
 restart_asterisk() {
+    asterisk -rx "core restart now"
+}
+
+#Function to reload Asterisk
+reload_asterisk() {
     asterisk -rx "core reload"
 }
 
 sip_registration_status=$(asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP" | grep Registered)
 
 if [[ -z "$sip_registration_status" ]]; then
-    log_message "SIP trunk is not registered. Restarting Asterisk..."
-    restart_asterisk
+    log_message "SIP trunk is not registered."
+    reload_asterisk
     log_message "Asterisk reloaded."
     retry_count=0
     while [[ $retry_count -lt $MAX_RETRIES ]]; do
@@ -33,7 +38,7 @@ if [[ -z "$sip_registration_status" ]]; then
             break
         fi
         restart_asterisk
-        log_message "Asterisk reloaded during retry."
+        log_message "Asterisk restarted during retry."
         ((retry_count++))
     done
 
