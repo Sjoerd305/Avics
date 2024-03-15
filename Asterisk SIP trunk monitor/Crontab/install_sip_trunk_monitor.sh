@@ -24,7 +24,7 @@ $LOG_DIR/sip_trunk_monitor.log {
     compress
     delaycompress
     notifempty
-    create 0640 root adm
+    create 0640 root root
 }
 EOF
 
