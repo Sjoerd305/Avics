@@ -8,15 +8,9 @@ MAX_RETRIES=5
 RETRY_DELAY=60
 LOG_FILE="/var/log/sip_trunk_monitor.log"
 
-# Check if run as root
-if [ "$(id -u)" -ne 0 ]; then
-   log_message "This script must be run as root" 1>&2
-   exit 1
-fi
-
 # Function to log messages with timestamp
 log_message() {
-    log_message "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOG_FILE"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOG_FILE"
 }
 
 # Function to restart Asterisk
@@ -28,6 +22,12 @@ restart_asterisk() {
 reload_asterisk() {
     asterisk -rx "core reload"
 }
+
+# Check if run as root
+if [ "$(id -u)" -ne 0 ]; then
+   log_message "This script must be run as root" 1>&2
+   exit 1
+fi
 
 # Check Asterisk CLI availability
 if ! command -v asterisk &> /dev/null; then
