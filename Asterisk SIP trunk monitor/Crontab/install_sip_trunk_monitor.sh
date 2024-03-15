@@ -11,6 +11,7 @@ fi
 # Set up variables
 INSTALL_DIR="/opt/sip_trunk_monitor"
 LOG_DIR="/var/log"
+CRON_JOB="*/5 * * * * $INSTALL_DIR/sip_trunk_monitor.sh"
 
 # Create the installation directory
 mkdir -p "$INSTALL_DIR" || { echo "Failed to create installation directory"; exit 1; }
@@ -35,7 +36,6 @@ $LOG_DIR/sip_trunk_monitor.log {
 EOF
 
 # Add the cron job if it doesn't already exist
-CRON_JOB="*/5 * * * * $INSTALL_DIR/sip_trunk_monitor.sh"
 if ! crontab -l | grep -Fq "$CRON_JOB" ; then
     (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab - || { echo "Failed to add cron job"; exit 1; }
 fi
