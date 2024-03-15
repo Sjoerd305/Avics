@@ -2,8 +2,12 @@
 # Sjoerd van Dijk @ 2024
 # Only for SOSv3 V2.0.19
 
+#Directories
+INSTALL_DIR="/opt/scripts"
+SNAPSHOT_DIR="/opt/scripts/snapshot"
+
 # Array of IP addresses
-ip_addresses="iplist.txt"
+ip_addresses="$INSTALL_DIR/iplist.txt"
 snapshot_endpoint="/take-snapshot/"
 
 # Check if the file exists
@@ -23,7 +27,7 @@ for ip_address in "${ip_addresses[@]}"; do
     download_url="http://${ip_address}/snapshots/snapshot.jpg"
 
     # Output file for the snapshot
-    output_file="${ip_address}_$(date +"%Y%m%d_%H%M%S").jpg"
+    output_file="$SNAPSHOT_DIR/${ip_address}_$(date +"%Y%m%d_%H%M%S").jpg"
 
     # Make the API request to create the snapshot
     curl "${api_url}"
