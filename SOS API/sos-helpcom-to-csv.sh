@@ -6,6 +6,7 @@
 # iplist.txt in following format name,ip
 #DON'T USE SPACES
 ##############################
+
 USERNAME="account"
 PASSWORD="password"
 REMOTE_FILE_PATH="/etc/kxa/json/helpcom-objects.json"

@@ -29,12 +29,6 @@ if [ "$(id -u)" -ne 0 ]; then
    exit 1
 fi
 
-# Check Asterisk CLI availability
-if ! command -v asterisk &> /dev/null; then
-    log_message "Asterisk CLI could not be found. Please ensure Asterisk is installed." 1>&2
-    exit 2
-fi
-
 sip_registration_status=$(asterisk -rx "sip show registry" | grep "$SIP_TRUNK_IP" | grep Registered)
 
 if [[ -z "$sip_registration_status" ]]; then
@@ -56,6 +50,6 @@ if [[ -z "$sip_registration_status" ]]; then
 
     if [[ $retry_count -eq $MAX_RETRIES ]]; then
         log_message "SIP trunk could not be registered after $MAX_RETRIES retries. Manual intervention may be required."
-        exit 3
+        exit 2
     fi
 fi

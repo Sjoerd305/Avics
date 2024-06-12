@@ -7,7 +7,7 @@ CRON="0 1 19 * *" # Minute, Hour, Day, Month, DayofWeek
 
 INSTALL_DIR="/opt/scripts"
 SNAPSHOT_DIR="/opt/scripts/snapshot"
-CRON_JOB="$CRON $INSTALL_DIR/sosv$SOS_VERSION-download-snapshot.sh" #Change cron job as needed
+CRON_JOB="$CRON $INSTALL_DIR/sosv$SOS_VERSION-download-snapshot.sh"
 
 #Create directories
 mkdir $INSTALL_DIR

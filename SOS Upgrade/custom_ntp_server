@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -e
+
+# Ensure the script is run as root
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
+  exit 1
+fi
+
+# Define the file path
+ntp_file="/etc/systemd/timesyncd.conf.d/custom_ntp.conf"
+config_dir="/etc/systemd/timesyncd.conf.d"
+
+remove_existing_conf_files() {
+  # Remove existing .conf files
+  rm -f "$config_dir"/*.conf
+  echo "Removed existing .conf files in $config_dir"
+}
+
+write_ntp_configuration() {
+  # Write the new configuration to the file
+  cat <<EOL > "$ntp_file"
+[Time]
+NTP=10.66.96.8
+EOL
+  echo "NTP configuration was written to $ntp_file"
+}
+
+restart_timesyncd_service() {
+  # Restart the systemd-timesyncd service
+  echo "Restarting systemd-timesyncd service..."
+  systemctl daemon-reload
+  systemctl restart systemd-timesyncd
+  echo "systemd-timesyncd service restarted successfully"
+}
+
+main() {
+  remove_existing_conf_files
+  write_ntp_configuration
+  restart_timesyncd_service
+}
+
+main "$@"

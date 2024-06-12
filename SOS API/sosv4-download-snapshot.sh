@@ -36,9 +36,6 @@ for ip_address in "${ip_addresses[@]}"; do
     if [ $? -eq 0 ]; then
         echo "Snapshot request sent for ${ip_address}. Waiting for 5 seconds..."
 
-        # Wait for 5 seconds
-        sleep 5
-
         # Download the snapshot
         curl --insecure -o "${output_file}" "${download_url}"
 
