@@ -1,4 +1,5 @@
 #!/bin/bash
+#Requirements: sshpass
 
 # Ensure the script is run as root on the local machine
 if [ "$EUID" -ne 0 ]; then
