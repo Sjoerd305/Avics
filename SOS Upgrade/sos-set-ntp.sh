@@ -28,8 +28,8 @@ done < iplist.txt
 username="your_username"
 password="your_password"
 
-# Define the NTP configuration content
-ntp_config_content="[Time]
+# Define the NTP configuration
+ntp_config="[Time]
 NTP=10.66.96.8
 "
 
@@ -44,15 +44,14 @@ for server in "${servers[@]}"; do
   sshpass -p "$password" ssh -o StrictHostKeyChecking=no "$username@$server" "
     echo '$password' | sudo -S bash -c '
       set -e
-      mkdir -p $config_dir
       rm -f $config_dir/*.conf
       echo \"Removed existing .conf files in $config_dir\"
-      echo \"$ntp_config_content\" | tee $ntp_file > /dev/null
+      echo \"$ntp_config\" | tee $ntp_file > /dev/null
       echo \"NTP configuration was written to $ntp_file\"
       echo \"Restarting systemd-timesyncd service...\"
       systemctl daemon-reload
       systemctl restart systemd-timesyncd
-      echo \"systemd-timesyncd service restarted successfully\"
+      echo \"systemd-timesyncd service restarted\"
     '
   "
 
